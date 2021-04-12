@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../core/jsonable.dart';
+import '../../meta/frappe/docfield.dart';
 import '../../model/frappe/document.dart';
 import '../../model/frappe/interfaces.dart';
 import '../../model/frappe/utils.dart';
@@ -249,27 +250,14 @@ class RenovationReport extends FrappeDocument {
 }
 
 @JsonSerializable()
-class RenovationReportFilter extends FrappeDocument {
-  RenovationReportFilter() : super('Renovation Report Filter');
+class RenovationReportFilter extends DocField {
+  RenovationReportFilter();
 
   factory RenovationReportFilter.fromJson(Map<String, dynamic> json) =>
       _$RenovationReportFilterFromJson(json);
 
   @JsonKey(name: 'default_value')
   String defaultValue;
-  @JsonKey(name: 'fieldname')
-  String fieldName;
-  @JsonKey(name: 'fieldtype')
-  String fieldType;
-
-  String options;
-  String label;
-
-  @JsonKey(
-      name: 'reqd',
-      fromJson: FrappeDocFieldConverter.checkToBool,
-      toJson: FrappeDocFieldConverter.boolToCheck)
-  bool required;
 
   @override
   T fromJson<T>(Map<String, dynamic> json) =>
